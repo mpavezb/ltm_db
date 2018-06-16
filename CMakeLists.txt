@@ -33,7 +33,7 @@ file(MAKE_DIRECTORY "${CATKIN_DEVEL_PREFIX}/include")
 catkin_python_setup()
 catkin_package(
   INCLUDE_DIRS include
-  LIBRARIES ltm_db_interface
+  LIBRARIES ltm_db_interface ltm_db_mongo
   CATKIN_DEPENDS roscpp rostime std_msgs geometry_msgs
   DEPENDS Boost
 )
