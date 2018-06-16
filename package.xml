@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>ltm_db</name>
+  <version>0.0.0</version>
+  <description>The ltm_db package</description>
+
+  <author email="bhaskara@willowgarage.com">Bhaskara Marthi</author>
+  <author email="cbrew@fetchrobotics.com">Connor Brew</author>
+  <author email="isucan@google.com">Ioan Sucan</author>
+  <author email="matias.pavez@ing.uchile.cl">Matías Pavez</author>
+  <maintainer email="matias.pavez@ing.uchile.cl">Matías Pavez</maintainer>
+  <url>https://github.com/mpavezb/ltm_db</url>
+
+  <license>TODO</license>
+
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  
+  <depend>rospy</depend>
+  <depend>roscpp</depend>
+  <depend>rostime</depend>
+  <depend>std_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>pluginlib</depend>
+  <depend>tf</depend>
+  <depend>curl</depend>
+  <depend>libssl-dev</depend>
+  <depend>python-pymongo</depend>
+
+  <exec_depend>boost</exec_depend>
+  <exec_depend>mongodb</exec_depend>
+  
+  <test_depend>gtest</test_depend>
+  <test_depend>rostest</test_depend>
+
+  <export>
+    <ltm_db plugin="${prefix}/mongo_database_connection_plugin_description.xml"/>
+  </export>
+
+</package>

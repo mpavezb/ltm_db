@@ -1,0 +1,7 @@
+<library path="libltm_db_mongo">
+  <class type="ltm_db_mongo::MongoDatabaseConnection" base_class_type="ltm_db::DatabaseConnection">
+    <description>
+    	This is an implementation of ltm_db for MongoDB
+    </description>
+  </class>
+</library>

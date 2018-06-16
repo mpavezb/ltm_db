@@ -1,0 +1,29 @@
+/*
+ * Copyright (c) 2013, Willow Garage, Inc.
+ * All rights reserved.
+ */
+
+/**
+ * \file 
+ * 
+ * Mongo has different magic on how it deals with macros starting with Ubuntu Raring
+ * so we need to be careful on how we include the headers we need
+ *
+ * \author Ioan Sucan
+ */
+
+#ifndef LTM_DB_MONGO_CONFIG_H
+#define LTM_DB_MONGO_CONFIG_H
+
+#cmakedefine01 MongoDB_EXPOSE_MACROS
+
+#if MongoDB_EXPOSE_MACROS
+#  define MONGO_EXPOSE_MACROS
+#  include <mongo/client/gridfs.h>
+#  include <mongo/client/undef_macros.h>
+#  undef MONGO_EXPOSE_MACROS
+#else
+#  include <mongo/client/gridfs.h>
+#endif
+
+#endif
