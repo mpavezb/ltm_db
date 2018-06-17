@@ -72,6 +72,36 @@ template<class M>
       return metadata_->lookupField(name);
     }
 
+    void lookupStringArray(const std::string& name, std::vector<std::string>& array) const
+    {
+      metadata_->lookupStringArray(name, array);
+    }
+
+    void lookupDoubleArray(const std::string& name, std::vector<double>& array) const
+    {
+      metadata_->lookupDoubleArray(name, array);
+    }
+
+    void lookupIntArray(const std::string& name, std::vector<int>& array) const
+    {
+      metadata_->lookupIntArray(name, array);
+    }
+
+    void lookupBoolArray(const std::string& name, std::vector<bool>& array) const
+    {
+      metadata_->lookupBoolArray(name, array);
+    }
+
+    void lookupUInt32Array(const std::string& name, std::vector<uint32_t>& array) const
+    {
+      metadata_->lookupUInt32Array(name, array);
+    }
+
+    void lookupFloatArray(const std::string& name, std::vector<float>& array) const
+    {
+      metadata_->lookupFloatArray(name, array);
+    }
+
     std::set<std::string> lookupFieldNames() const
     {
       return metadata_->lookupFieldNames();

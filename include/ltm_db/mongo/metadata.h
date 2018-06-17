@@ -287,6 +287,48 @@ public:
     WrappedBSON::update();
   }
 
+  void append(const std::string &name,
+              const std::vector<std::string>& val)
+  {
+    *builder_ << name << val;
+    WrappedBSON::update();
+  }
+
+  void append(const std::string &name,
+              const std::vector<double>& val)
+  {
+    *builder_ << name << val;
+    WrappedBSON::update();
+  }
+
+  void append(const std::string &name,
+              const std::vector<int>& val)
+  {
+    *builder_ << name << val;
+    WrappedBSON::update();
+  }
+
+  void append(const std::string &name,
+              const std::vector<bool>& val)
+  {
+    *builder_ << name << val;
+    WrappedBSON::update();
+  }
+
+  void append(const std::string &name,
+              const std::vector<uint32_t>& val)
+  {
+    *builder_ << name << val;
+    WrappedBSON::update();
+  }
+
+  void append(const std::string &name,
+              const std::vector<float>& val)
+  {
+    *builder_ << name << val;
+    WrappedBSON::update();
+  }
+
   std::string lookupString(const std::string& name) const
   {
     return getStringField(name.c_str());
@@ -312,6 +354,60 @@ public:
   bool lookupField(const std::string& name) const
   {
     return BSONObj::hasField(name.c_str());
+  }
+
+  void lookupStringArray(const std::string& name, std::vector<std::string>& array) const {
+    // TODO: verify this is working
+    array.clear();
+    mongo::BSONObjIterator fields (getObjectField(name));
+    while (fields.more()) {
+      array.push_back(fields.next().String());
+    }
+  }
+
+  void lookupDoubleArray(const std::string& name, std::vector<double>& array) const {
+    // TODO: verify this is working
+    array.clear();
+    mongo::BSONObjIterator fields (getObjectField(name));
+    while (fields.more()) {
+      array.push_back(fields.next().numberDouble());
+    }
+  }
+
+  void lookupIntArray(const std::string& name, std::vector<int>& array) const {
+    // TODO: verify this is working
+    array.clear();
+    mongo::BSONObjIterator fields (getObjectField(name));
+    while (fields.more()) {
+      array.push_back(fields.next().numberInt());
+    }
+  }
+
+  void lookupBoolArray(const std::string& name, std::vector<bool>& array) const {
+    // TODO: verify this is working
+    array.clear();
+    mongo::BSONObjIterator fields (getObjectField(name));
+    while (fields.more()) {
+    }
+    array.push_back(fields.next().boolean());
+  }
+
+  void lookupUInt32Array(const std::string& name, std::vector<uint32_t>& array) const {
+    // TODO: verify this is working
+    array.clear();
+    mongo::BSONObjIterator fields (getObjectField(name));
+    while (fields.more()) {
+      array.push_back((uint32_t) fields.next().numberInt());
+    }
+  }
+
+  void lookupFloatArray(const std::string& name, std::vector<float>& array) const {
+    // TODO: verify this is working
+    array.clear();
+    mongo::BSONObjIterator fields (getObjectField(name));
+    while (fields.more()) {
+      array.push_back((float) fields.next().numberDouble());
+    }
   }
 
   std::set<std::string> lookupFieldNames() const

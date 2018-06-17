@@ -69,11 +69,23 @@ public:
   virtual void append(const std::string& name, const double val) = 0;
   virtual void append(const std::string& name, const int val) = 0;
   virtual void append(const std::string& name, const bool val) = 0;
+  virtual void append(const std::string& name, const std::vector<std::string>& val) = 0;
+  virtual void append(const std::string& name, const std::vector<double>& val) = 0;
+  virtual void append(const std::string& name, const std::vector<int>& val) = 0;
+  virtual void append(const std::string& name, const std::vector<bool>& val) = 0;
+  virtual void append(const std::string& name, const std::vector<uint32_t>& val) = 0;
+  virtual void append(const std::string& name, const std::vector<float>& val) = 0;
   virtual std::string lookupString(const std::string& name) const = 0;
   virtual double lookupDouble(const std::string& name) const = 0;
   virtual int lookupInt(const std::string& name) const = 0;
   virtual bool lookupBool(const std::string& name) const = 0;
   virtual bool lookupField(const std::string& name) const = 0;
+  virtual void lookupStringArray(const std::string& name, std::vector<std::string>& array) const = 0;
+  virtual void lookupDoubleArray(const std::string& name, std::vector<double>& array) const = 0;
+  virtual void lookupIntArray(const std::string& name, std::vector<int>& array) const = 0;
+  virtual void lookupBoolArray(const std::string& name, std::vector<bool>& array) const = 0;
+  virtual void lookupUInt32Array(const std::string& name, std::vector<uint32_t>& array) const = 0;
+  virtual void lookupFloatArray(const std::string& name, std::vector<float>& array) const = 0;
   virtual std::set<std::string> lookupFieldNames() const = 0;
 };
 
