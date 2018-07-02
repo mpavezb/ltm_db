@@ -34,6 +34,7 @@ public:
   virtual ~Query()
   {
   }
+  virtual void append(const std::string& json) = 0;
   virtual void append(const std::string& name, const std::string& val) = 0;
   virtual void append(const std::string& name, const double val) = 0;
   virtual void append(const std::string& name, const int val) = 0;

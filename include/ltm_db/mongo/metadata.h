@@ -95,6 +95,12 @@ public:
     WrappedBSON(other)
   {}
 
+  void append(const std::string& json)
+  {
+    ROS_WARN_STREAM("Append json string: " << json);
+    builder_->appendElements(mongo::fromjson(json.c_str()));
+    WrappedBSON::update();
+  }
 
   void append(const std::string& name,
               const std::string& val)
