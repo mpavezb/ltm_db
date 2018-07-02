@@ -73,6 +73,7 @@ target_link_libraries(ltm_db_test_dbloader ltm_db_interface ${catkin_LIBRARIES} 
 
 
 set(ltm_db_mongo_srcs
+  src/mongo/util.cpp
   src/mongo/mongo_dummy.cpp
   src/mongo/query_results.cpp
   src/mongo/message_collection.cpp

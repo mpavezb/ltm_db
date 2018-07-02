@@ -23,6 +23,7 @@
 #endif
 #include <ltm_db/mongo/config.h>
 #include <ltm_db/interface/metadata.h>
+#include <ltm_db/mongo/util.h>
 
 namespace ltm_db_mongo
 {
@@ -94,6 +95,7 @@ public:
     WrappedBSON(other)
   {}
 
+
   void append(const std::string& name,
               const std::string& val)
   {
@@ -123,6 +125,34 @@ public:
   {
     ROS_DEBUG_STREAM("Append bool: " << name << ", " << val);
     *builder_ << name << val;
+    WrappedBSON::update();
+  }
+
+
+  void appendIN(const std::string& name,
+                const std::vector<std::string>& array)
+  {
+    std::string str_array = util::vector_to_str(array);
+    ROS_DEBUG_STREAM("Append IN string array: " << name << ", " << str_array);
+    *builder_ << name << WrappedBSON("{ $in: " + str_array + " }");
+    WrappedBSON::update();
+  }
+
+  void appendIN(const std::string& name,
+                const std::vector<int>& array)
+  {
+    std::string str_array = util::vector_to_str(array);
+    ROS_DEBUG_STREAM("Append IN int array: " << name << ", " << str_array);
+    *builder_ << name << WrappedBSON("{ $in: " + str_array + " }");
+    WrappedBSON::update();
+  }
+
+  void appendIN(const std::string& name,
+                const std::vector<uint32_t>& array)
+  {
+    std::string str_array = util::vector_to_str(array);
+    ROS_DEBUG_STREAM("Append IN uint32 array: " << name << ", " << str_array);
+    *builder_ << name << WrappedBSON("{ $in: " + str_array + " }");
     WrappedBSON::update();
   }
 

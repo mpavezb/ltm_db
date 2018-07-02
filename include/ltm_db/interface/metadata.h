@@ -38,6 +38,9 @@ public:
   virtual void append(const std::string& name, const double val) = 0;
   virtual void append(const std::string& name, const int val) = 0;
   virtual void append(const std::string& name, const bool val) = 0;
+  virtual void appendIN(const std::string& name, const std::vector<std::string> &array) = 0;
+  virtual void appendIN(const std::string& name, const std::vector<int> &array) = 0;
+  virtual void appendIN(const std::string& name, const std::vector<uint32_t> &array) = 0;
   virtual void appendLT(const std::string& name, const double val) = 0;
   virtual void appendLT(const std::string& name, const int val) = 0;
   virtual void appendLTE(const std::string& name, const double val) = 0;
