@@ -306,6 +306,17 @@ public:
     WrappedBSON::update();
   }
 
+  void appendMeta(const std::string& name, const std::vector<Metadata::ConstPtr>& array) {
+    mongo::BSONArrayBuilder bab;
+    std::vector<MongoMetadata::ConstPtr>::const_iterator it;
+    for (it = array.begin(); it != array.end(); ++it) {
+      mongo::BSONObj bson = downcastMetadata(*it);
+      bab.append(bson);
+    }
+    builder_->appendArray(name, bab.arr());
+    WrappedBSON::update();
+  }
+
   void append(const std::string& name,
               const std::string& val)
   {
