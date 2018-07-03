@@ -130,4 +130,10 @@ template<class M>
     return collection_->createMetadata();
   }
 
+template<class M>
+  Metadata::Ptr MessageCollection<M>::createNestedMetadata() const
+  {
+    return collection_->createNestedMetadata();
+  }
+
 } // namespace

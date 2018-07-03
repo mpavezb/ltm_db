@@ -277,10 +277,10 @@ public:
 class MongoMetadata : public ltm_db::Metadata, public WrappedBSON
 {
 public:
-  MongoMetadata() :
+  MongoMetadata(bool init=true) :
     WrappedBSON ()
   {
-    initialize();
+      if (init) initialize();
   }
 
   MongoMetadata(const std::string& json) :
@@ -294,6 +294,17 @@ public:
   MongoMetadata(const BSONObj& other) :
     WrappedBSON(other)
   {}
+
+  inline MongoMetadata& downcastMetadata(Metadata::ConstPtr metadata) const {
+    return *(const_cast<MongoMetadata*>(static_cast<const MongoMetadata*>(metadata.get())));
+  }
+
+  void appendMeta(const std::string& name, ltm_db::Metadata::ConstPtr metadata)
+  {
+    mongo::BSONObj bson = downcastMetadata(metadata);
+    *builder_ << name << bson;
+    WrappedBSON::update();
+  }
 
   void append(const std::string& name,
               const std::string& val)

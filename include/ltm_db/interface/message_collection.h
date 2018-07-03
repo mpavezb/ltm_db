@@ -31,6 +31,7 @@ public:
   virtual unsigned count() = 0;
   virtual Query::Ptr createQuery() const = 0;
   virtual Metadata::Ptr createMetadata() const = 0;
+  virtual Metadata::Ptr createNestedMetadata() const = 0;
   virtual std::string collectionName() const = 0;
 
   typedef boost::shared_ptr<MessageCollectionHelper> Ptr;
@@ -101,6 +102,7 @@ template<class M>
     Query::Ptr createQuery() const;
 
     Metadata::Ptr createMetadata() const;
+    Metadata::Ptr createNestedMetadata() const;
 
     typedef boost::shared_ptr<MessageCollection<M> > Ptr;
     typedef M message_type;

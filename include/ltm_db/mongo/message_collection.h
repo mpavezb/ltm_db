@@ -71,7 +71,11 @@ public:
   }
 
   Metadata::Ptr createMetadata() const {
-    return Metadata::Ptr(new MongoMetadata());
+    return Metadata::Ptr(new MongoMetadata(true));
+  }
+
+  Metadata::Ptr createNestedMetadata() const {
+    return Metadata::Ptr(new MongoMetadata(false));
   }
   
 private:
