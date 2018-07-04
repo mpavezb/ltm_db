@@ -97,7 +97,7 @@ public:
 
   void append(const std::string& json)
   {
-    ROS_WARN_STREAM("Append json string: " << json);
+    ROS_DEBUG_STREAM("Append json string: '" << json << "'");
     builder_->appendElements(mongo::fromjson(json.c_str()));
     WrappedBSON::update();
   }
